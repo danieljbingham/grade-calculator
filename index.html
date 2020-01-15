@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grade Calculator</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <a hidden></a>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="form-group">
+                    <div class="form-inline row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="text" name="mark" id="mark" class="form-control" placeholder="Mark" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="outof" id="outof" class="form-control" placeholder="Out Of" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="permod" id="permod" class="form-control" placeholder="% of module" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    
+                    <div class="form-inline row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="text" name="outof1" id="outof1" class="form-control" placeholder="Out Of" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="permod1" id="permod1" class="form-control" placeholder="% of module" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="form-inline row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="text" name="target" id="target" class="form-control" placeholder="Target grade (out of 100)" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                                
+                <div class="form-group">
+                    <input type="button" value="Calculate mark needed" class="btn btn-primary btn-lg btn-block" onclick="calc();"/>
+                </div>
+
+                <p id="output"></p>
+                
+            </div>
+        </div>
+
+        <script>
+            function calc() {
+                var mark = document.getElementById("mark").value;
+                var outof = document.getElementById("outof").value;
+                var permod = document.getElementById("permod").value;
+                var outof1 = document.getElementById("outof1").value;
+                var permod1 = document.getElementById("permod1").value;
+                var target = document.getElementById("target").value;
+
+                var result = (target - ((mark/outof * 100) * (permod / 100))) / (permod1/100);
+                var resultOutOf = result / 100 * outof1;
+                console.log(result + " / 100");
+                console.log(resultOutOf + " / " + outof1);
+
+                document.getElementById("output").innerHTML = "You need <b>" + Math.round(resultOutOf * 10) / 10 + "</b> out of <b>" + outof1 + "</b> to achieve your target grade!";
+            }
+        </script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
+</html>
